@@ -4,12 +4,14 @@ from pages.login_page import LoginPage
 from pages.secure_page import SecurePage
 
 
-def test_login_success(login_page):
-    login_page.login("tomsmith", "SuperSecretPassword!")
+def test_login_success(login_page, test_users):
+    user = test_users["valid_user"]
+    login_page.login(user["username"], user["password"])
     assert "You logged into a secure area!" in login_page.success_message
 
-def test_login_failure(login_page):
-    login_page.login("tomsmith111", "SuperSecretPassword!")
+def test_login_failure(login_page, test_users):
+    user = test_users["invalid_user"]
+    login_page.login(user["username"], user["password"])
     assert "Your username is invalid!" in login_page.error_message
 
 def test_logging_and_logout(login_page, page):

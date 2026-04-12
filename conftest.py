@@ -1,4 +1,5 @@
-import pytest
+import pytest, json
+from pathlib import Path
 
 from pages.checkboxes_page import CheckboxesPage
 from pages.login_page import LoginPage
@@ -23,4 +24,9 @@ def checkbox_page(page):
     cp.navigate()
     return cp
 
+@pytest.fixture(scope="session")
+def test_users():
+    data_file = Path(__file__).parent / "test_data"  / "users.json"
+    with open(data_file) as f:
+        return json.load(f)
 
