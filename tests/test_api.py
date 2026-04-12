@@ -1,7 +1,5 @@
 import pytest
-from playwright.sync_api import APIRequestContext
 from playwright.sync_api import Playwright
-from sqlalchemy import nullsfirst
 
 """"
 def test_get_single_user(playwright):
