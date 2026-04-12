@@ -21,7 +21,7 @@ def test_get_single_user(playwright):
 """
 @pytest.fixture
 def api_context(playwright: Playwright):
-    """Reusable API context for all tests in this file."""
+
     context = playwright.request.new_context(
         base_url="https://jsonplaceholder.typicode.com"
     )
@@ -48,7 +48,7 @@ def test_get_all_users(api_context):
     assert users[0]["id"] == 1
 
 def test_create_user(api_context):
-    """POST — create a new resource."""
+
     response = api_context.post("/users", data={
         "name": "Andrei",
         "job": "QA Automation Engineer"
@@ -62,7 +62,7 @@ def test_create_user(api_context):
 
 
 def test_update_user(api_context):
-    """PUT — replace an existing resource."""
+
     response = api_context.put("/users/2", data={
         "name": "Andrei Updated",
         "job": "Senior QA Engineer"
@@ -75,7 +75,7 @@ def test_update_user(api_context):
 
 
 def test_delete_user(api_context):
-    """DELETE — remove a resource."""
+
     response = api_context.delete("/users/2")
 
     assert response.status == 200
@@ -87,7 +87,7 @@ def test_get_nonexistent_user(api_context):
 
 @pytest.mark.parametrize("user_id",(1,2,3,4,5))
 def test_get_specific_user(api_context, user_id):
-    """GET with parametrized test"""
+
     response = api_context.get(f"/users/{user_id}")
 
     assert response.status == 200

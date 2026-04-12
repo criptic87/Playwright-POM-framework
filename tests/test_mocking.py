@@ -3,7 +3,6 @@ import json
 
 
 def test_mocked_user_list(page: Page):
-    """Mock the API call so we never hit the real server."""
 
     fake_response = {
         "page": 1,
@@ -30,7 +29,6 @@ def test_mocked_user_list(page: Page):
     assert "bob@test.com" in content
 
 def test_server_returns_empty_list(page: Page):
-    """What does the page show when there are no users?"""
 
     def handle_route(route: Route):
         route.fulfill(
@@ -48,7 +46,6 @@ def test_server_returns_empty_list(page: Page):
 
 
 def test_server_returns_error(page: Page):
-    """What happens when the server crashes?"""
 
     def handle_route(route: Route):
         route.fulfill(
