@@ -54,11 +54,11 @@ def test_create_user(api_context):
         "job": "QA Automation Engineer"
     })
 
-    assert response.status == 201    # 201 = Created
+    assert response.status == 201   
     data = response.json()
     assert data["name"] == "Andrei"
     assert data["job"] == "QA Automation Engineer"
-    assert "id" in data              # server assigns an ID
+    assert "id" in data             
 
 
 def test_update_user(api_context):
