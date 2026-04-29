@@ -7,8 +7,6 @@ def test_dynamic_loading(page: Page):
 
     page.click("#start button")
 
-    # The #finish element doesn't exist yet — it appears 5 seconds later
-
     expect(page.locator("#finish h4")).to_have_text("Hello World!")
 
 
