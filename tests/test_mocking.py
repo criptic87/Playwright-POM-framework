@@ -23,7 +23,6 @@ def test_mocked_user_list(page: Page):
 
     page.goto("https://reqres.in/api/users")
 
-    # Read what the browser received (the mocked response)
     content = page.content()
     assert "Alice" in content
     assert "bob@test.com" in content
